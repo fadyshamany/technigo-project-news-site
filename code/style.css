@@ -1,4 +1,260 @@
-html {
-  background: #0025ff;
+/* === Base Styles === */
+:root {
+  --brand: #1e6b4e;
+  --paper: #f9f9f9;
+  --text: #333;
+  --gap: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--paper);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* === Header === */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-wrap: wrap;
+}
+
+
+/* Logo */
+.logo {
+  font-weight: bold;
+  color: var(--brand);
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+/* Date & time section */
+.datetime {
+  text-align: center;
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+#current-date {
+  display: block;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+#current-time {
+  font-family: monospace;
+}
+
+/* Navigation */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: var(--brand);
+}
+
+/* === Daily Prayer Section === */
+.daily-prayer {
+  background: linear-gradient(145deg, #ffffff, #f5f2ea);
+  border-left: 4px solid var(--brand);
+  padding: 1.5rem 2rem;
+  margin: 2rem auto;
+  width: min(100% - 2rem, 800px);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.daily-prayer:hover {
+  transform: scale(1.01);
+}
+
+.daily-prayer h2 {
+  color: var(--brand);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+#prayer-text {
+  color: #444;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+
+/* === Main Feature === */
+.feature {
+  position: relative;
+  margin: 2rem auto;
+  width: min(100% - 2rem, 1100px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.feature img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.feature-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.5);
   color: #fff;
+}
+
+.feature-text h1 {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.feature-text p {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background: #15523b;
+}
+
+/* === News Grid === */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  width: min(100% - 2rem, 1100px);
+  margin: 2rem auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin: 0.8rem 1rem 0.3rem;
+  color: var(--brand);
+}
+
+.card p {
+  font-size: 0.9rem;
+  margin: 0 1rem 1rem;
+  color: #555;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* === Footer === */
+.site-footer {
+  background: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #ddd;
+}
+
+/* === Responsive Design === */
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .datetime {
+    order: 3; /* date/time below nav */
+    font-size: 0.8rem;
+  }
+
+  .site-nav {
+    order: 2;
+    justify-content: center;
+  }
+
+  .logo {
+    order: 1;
+    font-size: 1.1rem;
+  }
+}
+body {
+  font-family: 'Georgia', 'Segoe UI', serif;
+  background: #faf8f3 url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  color: var(--text);
+  line-height: 1.6;
 }

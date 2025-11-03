@@ -1,23 +1,124 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <!-- Change the title below -->
-    <title>News Site</title>
-    <link rel="stylesheet" href="./style.css" />
-    <!-- dont forget the meta tag for responsiveness -->
-  </head>
-  <body>
-    <header>
-      <!-- Some kind of logo and navbar -->
-    </header>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Path News</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <section class="big-news">
-      <!-- The big news content -->
-    </section>
+<body>
 
-    <section class="">
-      <!-- The other news  -->
+  <!-- Header -->
+  <header class="site-header">
+    <a href="#" class="logo">✝ Faith & News</a>
+
+    <!-- Centered date + time -->
+    <div class="datetime">
+      <span id="current-date"></span>
+      <span id="current-time"></span>
+    </div>
+
+    <nav class="site-nav">
+      <a href="#">Home</a>
+      <a href="#">World</a>
+      <a href="#">Church</a>
+      <a href="#">Culture</a>
+      <a href="#">Devotional</a>
+    </nav>
+  </header>
+
+  <!-- Daily Prayer section -->
+  <section class="daily-prayer">
+    <h2>Daily Prayer</h2>
+    <p id="prayer-text">Loading prayer...</p>
+  </section>
+
+  <!-- Main content -->
+  <main class="site-main">
+    <!-- Main Feature -->
+    <article class="feature">
+      <img src="assets/big-cross.jpg" alt="Sunrise over a church steeple" />
+      <div class="feature-text">
+        <h1>“Blessed are the peacemakers”</h1>
+        <p>How local churches are helping bring hope and reconciliation in a divided world.</p>
+        <a href="#" class="btn">Read story</a>
+      </div>
+    </article>
+
+    <!-- News Grid -->
+    <section class="news-grid">
+      <article class="card">
+        <a href="https://www.christianitytoday.com/news/2025/february/churches-unite-storm-relief.html" target="_blank">
+          <img src="assets/article-1.jpg" alt="Persecuted Christians" />
+          <h2>Trump’s Refugee Policy ‘Is Slamming the Door on Persecuted Christians’</h2>
+          <p>Church • 4 min read</p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="https://www.crosswalk.com/faith/devotionals/daily-devotion-faith-trials.html" target="_blank">
+          <img src="assets/article-2.jpg" alt="Hands holding a Bible" />
+          <h2>Bible Reading Is Up Among Young Adults</h2>
+          <p>Devotional • 3 min read</p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="https://www1.cbn.com/cbnnews/world/2025/faith-groups-feed-hundreds-each-week.html" target="_blank">
+          <img src="assets/article-3.jpg" alt="People serving food" />
+          <h2>Will There Be a Christian Super Bowl Halftime Show?</h2>
+          <p>World • 5 min read</p>
+        </a>
+      </article>
+
+      <article class="card">
+        <a href="https://www.christianitytoday.com/news/2025/february/new-gospel-album-celebrates-beatitudes.html" target="_blank">
+          <img src="assets/article-4.jpg" alt="Gospel choir" />
+          <h2>New Album Celebrates the Beatitudes</h2>
+          <p>Culture • 6 min read</p>
+        </a>
+      </article>
     </section>
-  </body>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Faith & News • “Let your light shine”</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Date + time in header
+    function updateDateTime() {
+      const dateEl = document.getElementById("current-date");
+      
+      const now = new Date();
+      const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+      dateEl.textContent = now.toLocaleDateString(undefined, options);
+    
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 60000);
+
+    // Daily Prayer (Bible verse) API — CORS safe
+    async function fetchDailyPrayer() {
+      const el = document.getElementById("prayer-text");
+      try {
+        const res = await fetch("https://beta.ourmanna.com/api/v1/get/?format=text");
+        if (!res.ok) throw new Error("Network error");
+        const text = (await res.text()).trim();
+        el.textContent = text || "May the Lord bless and guide us this day.";
+      } catch (err) {
+        console.error("Prayer fetch failed:", err);
+        el.textContent = "May the Lord bless and guide us this day.";
+      }
+    }
+    fetchDailyPrayer();
+  </script>
+
+</body>
 </html>
