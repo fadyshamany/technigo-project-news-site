@@ -258,3 +258,22 @@ body {
   color: var(--text);
   line-height: 1.6;
 }
+.site-nav a {
+  position: relative;
+}
+/* menu navigation */
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--brand);
+  transition: width 0.3s ease;
+}
+
+.site-nav a:hover::after {
+  width: 100%;
+}

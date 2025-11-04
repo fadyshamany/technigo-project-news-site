@@ -4,10 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Path News</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
+
 
   <!-- Header -->
   <header class="site-header">
@@ -38,7 +39,7 @@
   <main class="site-main">
     <!-- Main Feature -->
     <article class="feature">
-      <img src="assets/big-cross.jpg" alt="Sunrise over a church steeple" />
+      <img src="./assets/big-cross.jpg" alt="Sunrise over a church steeple" />
       <div class="feature-text">
         <h1>“Blessed are the peacemakers”</h1>
         <p>How local churches are helping bring hope and reconciliation in a divided world.</p>
@@ -50,7 +51,7 @@
     <section class="news-grid">
       <article class="card">
         <a href="https://www.christianitytoday.com/news/2025/february/churches-unite-storm-relief.html" target="_blank">
-          <img src="assets/article-1.jpg" alt="Persecuted Christians" />
+          <img src="./assets/article-1.jpg" alt="Persecuted Christians" />
           <h2>Trump’s Refugee Policy ‘Is Slamming the Door on Persecuted Christians’</h2>
           <p>Church • 4 min read</p>
         </a>
@@ -75,7 +76,7 @@
       <article class="card">
         <a href="https://www.christianitytoday.com/news/2025/february/new-gospel-album-celebrates-beatitudes.html" target="_blank">
           <img src="assets/article-4.jpg" alt="Gospel choir" />
-          <h2>New Album Celebrates the Beatitudes</h2>
+          <h2>Women are 'easy targets' for persecution in Christian-minority countries</h2>
           <p>Culture • 6 min read</p>
         </a>
       </article>
@@ -84,7 +85,7 @@
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>© <span id="year"></span> Faith & News • “Let your light shine”</p>
+    <p>© <span id="year"></span> Faith & News • “Let your light shine” by Fady Shamany</p>
   </footer>
 
   <!-- Scripts -->
@@ -119,6 +120,10 @@
     }
     fetchDailyPrayer();
   </script>
+<script>
+const btn = document.getElementById('dark-mode-toggle');
+btn.addEventListener('click', () => document.body.classList.toggle('dark'));
+</script>
 
 </body>
 </html>
