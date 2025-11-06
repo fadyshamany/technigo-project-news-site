@@ -1,12 +1,7 @@
 # News Site
 
-Replace this readme with your own information about the project. You can include things like:
-
-- Brief description of the assignment
-- How you approached the task, what tools and techniques you used, and how you planned it
-- If you had more time, what would be next?
+This is a draft of a christian site. I have designed the menus to be responsive and stylish. A daily verse viewer that fetches the verses from an API. The site is build with basic grid structure and I used grid to insert box inside a box. 
+Responive in a way that cards enlarges to 1.02 in at mouse over (hover)
 
 ## View it live
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
-
-Here is new demo text
+Site is live and can be found at https://tangerine-beignet-0300e1.netlify.app
